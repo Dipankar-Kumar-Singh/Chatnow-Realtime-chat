@@ -25,8 +25,29 @@ It used WebSocket for low-latency communction , if it can't connect using webSoc
 -   broadcasting to all clients or to a subset of clients (what we call “Room”)
 -   multiplexing
 
+### Express as a backend server 
+Express also provides a simplified interface for creating an HTTP server, which is created using the `http.createServer()` method and passing the `app` object as an argument. The resulting `server` object is then passed to the Socket.IO library to create a WebSocket server that allows real-time communication between the server and client.
+
+Overall, the role of Express in this code is to provide a framework for handling HTTP requests and serving static files, while Socket.IO is used for real-time communication between the server and client.
+
+
 ## Installation instructions
 
+downlaod the repo , navigate to the local folder of repo 
+
+Install the dependecy 
+```Bash
+npm install 
+```
+
+Start the app 
+```Bash
+npm start 
+```
+
+it will start the server on the `http://localhost:3000/`
+
+Login with any username of choice and select a Room from the list to join , then click join and start chating with other client in the same room
 
 ## Usage instructions
 
