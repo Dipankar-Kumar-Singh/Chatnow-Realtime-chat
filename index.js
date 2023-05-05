@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
 	socket.on('chatMessage', (message) => {
 		const user = getCurrentUser(socket.id);
 
-		io.to(user.room).emit('message', formateMesssage('USER', message));
+		io.to(user.room).emit('message', formateMesssage( user.username , message));
 	});
 
 	// Runs when client Disconneccts
