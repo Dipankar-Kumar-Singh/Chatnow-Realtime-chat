@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
 
 		io.to(user.room).emit('message', formateMesssage( user.username , message));
 	});
+	
 
 	// Runs when client Disconneccts
 	socket.on('disconnect', () => {
