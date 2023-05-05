@@ -49,6 +49,26 @@ it will start the server on the `http://localhost:3000/`
 Login with any username of choice and select a Room from the list to join , then click join and start chating with other client in the same room
 
 ## Usage instructions
+### Login Screen 
+Enter the Usernaem and select Room [ by defaul Room : Javascript ] 
+![LoginScreeen](https://user-images.githubusercontent.com/66475186/236559830-154175de-f92c-409c-aa2a-295f8145199c.png)
+
+
+Different Options to Choce from for the Room : 
+![Options of Differnt Chat Room](https://user-images.githubusercontent.com/66475186/236559932-3c4efa92-7464-4f45-aff0-929f5c22a076.png)
+
+After Joining the Chat Room , A welcome message is show to the joiner 
+![Joined-Successfully](https://user-images.githubusercontent.com/66475186/236560046-c92f4c01-2544-44ba-8c29-8dadf6d805dc.png)
+
+Now if Other memeber joins the Room , it Notifies all the other memeber of the Room about it's entry .
+![New_memeber_feedbacck](https://user-images.githubusercontent.com/66475186/236560238-eded1143-0844-4f4a-a19a-23b55bfd0678.png)
+
+Now Chatting starts .. Any ome can send message and it will be broadcasted via [ Client --> server --> All Other Client ] 
+People can start taking , message will be ordred with respect to time parameter .
+![Final](https://user-images.githubusercontent.com/66475186/236560526-e9899bf3-09ab-4b09-a2c9-1d15a785b45e.png)
+
+Each Message UI has few It's sender name and time attached to it , heping readers to identify the auther of the comment .
+![Time Log Details](https://user-images.githubusercontent.com/66475186/236560704-66848b4d-80d2-4e3b-99c5-3d9bddaf32d6.png)
 
 
 
