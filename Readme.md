@@ -2,7 +2,6 @@
 
 ## Introduction
 
-Welcome to my real-time chat web app! This app allows users to connect and chat in different rooms. 
 Welcome to my awesome project! I have created a real-time chat web app that allows people to connect and chat in different rooms. It is interactive, fun, and easy to use. You can join any room you like, or create your own. You can also see who is online.
 This project uses **Socket.IO**, a library that enables low-latency, bidirectional and event-based communication between the browser and the server. Socket.IO handles the WebSocket connection and the fallback to HTTP long-polling if needed. It also provides features like automatic reconnection, namespaces, rooms, and broadcasting.
 I hope you enjoy using this app as much as I enjoyed making it. Feel free to explore the code and learn more about Socket.IO and how it works. If you have any feedback or suggestions, please let me know. Thank you for your interest in my project!
