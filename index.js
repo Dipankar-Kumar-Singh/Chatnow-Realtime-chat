@@ -9,9 +9,7 @@ const {
 	userLeave,
 	getRoomUsers,
 } = require('./utils/users');
-const { log } = require('console');
 
-//
 const app = express();
 const server = http.createServer(app);
 const PORT = 3000 || process.env.PORT;
@@ -52,7 +50,6 @@ io.on('connection', (socket) => {
 	// Listen for chatMessage
 	socket.on('chatMessage', (message) => {
 		const user = getCurrentUser(socket.id);
-		console.log(socket.id);
 
 		io.to(user.room).emit('message', formateMesssage('USER', message));
 	});
@@ -60,8 +57,6 @@ io.on('connection', (socket) => {
 	// Runs when client Disconneccts
 	socket.on('disconnect', () => {
 		const user = userLeave(socket.id);
-
-		log(user);
 
 		if (user) {
 			io.to(user.room).emit(
