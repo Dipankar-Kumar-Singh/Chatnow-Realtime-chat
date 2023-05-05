@@ -16,19 +16,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Runs when client connects
 io.on('connection', (socket) => {
-	console.log('New Connection Register.... ');
+	socket.on('joinRoom', ({ username, room }) => {
+		// wlecome current user
+		socket.emit(
+			'message',
+			formateMesssage(botName, 'Welcome to Chat Room.....')
+		);
 
-	// wlecome current user
-	socket.emit(
-		'message',
-		formateMesssage(botName, 'Welcome to Chat Room.....')
-	);
-
-	// Broadbase when a user disconect
-	socket.broadcast.emit(
-		'message',
-		formateMesssage(botName, 'A user has joined the Chat')
-	);
+		// Broadbase when a user disconect
+		socket.broadcast.emit(
+			'message',
+			formateMesssage(botName, 'A user has joined the Chat')
+		);
+	});
 
 	// Runs when client Disconneccts
 	socket.on('disconnect', () => {
