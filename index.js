@@ -3,6 +3,7 @@ const path = require('path');
 const http = require('http');
 const socketio = require('socket.io');
 const formateMesssage = require('./utils/messages');
+const { userJoin, getCurrentUser } = require('./utils/users');
 
 //
 const app = express();
@@ -17,30 +18,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Runs when client connects
 io.on('connection', (socket) => {
 	socket.on('joinRoom', ({ username, room }) => {
-		
-        
-        
-        
-        // wlecome current user
+		const user = userJoin(socket.id, username, room);
+
+		socket.join(user.room);
+
+		// wlecome current user
 		socket.emit(
 			'message',
 			formateMesssage(botName, 'Welcome to Chat Room.....')
 		);
 
-		// Broadbase when a user disconect
-		socket.broadcast.emit(
-			'message',
-			formateMesssage(botName, 'A user has joined the Chat')
-		);
+		// Broadbase when a user Connects
+		socket.broadcast
+			.to(user.room)
+			.emit(
+				'message',
+				formateMesssage(botName, `${username} has joined the Chat`)
+			);
 	});
 
 	// Listen for chatMessage
 	socket.on('chatMessage', (message) => {
-		// console.log(message) ;
-		io.emit('message', formateMesssage('USER', message));
+
+        const user = getCurrentUser(socket.id)
+        console.log(socket.id) ;
+
+		io.to(user.room).emit('message', formateMesssage('USER', message));
 	});
 
-    // Runs when client Disconneccts
+	// Runs when client Disconneccts
 	socket.on('disconnect', () => {
 		io.emit(
 			'message',
