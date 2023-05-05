@@ -17,7 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Runs when client connects
 io.on('connection', (socket) => {
 	socket.on('joinRoom', ({ username, room }) => {
-		// wlecome current user
+		
+        
+        
+        
+        // wlecome current user
 		socket.emit(
 			'message',
 			formateMesssage(botName, 'Welcome to Chat Room.....')
@@ -30,18 +34,18 @@ io.on('connection', (socket) => {
 		);
 	});
 
-	// Runs when client Disconneccts
+	// Listen for chatMessage
+	socket.on('chatMessage', (message) => {
+		// console.log(message) ;
+		io.emit('message', formateMesssage('USER', message));
+	});
+
+    // Runs when client Disconneccts
 	socket.on('disconnect', () => {
 		io.emit(
 			'message',
 			formateMesssage(botName, 'A user has Left the Chat')
 		);
-	});
-
-	// Listen for chatMessage
-	socket.on('chatMessage', (message) => {
-		// console.log(message) ;
-		io.emit('message', formateMesssage('USER', message));
 	});
 });
 
